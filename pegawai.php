@@ -43,12 +43,17 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
+<<<<<<< Updated upstream
 				      $query = "SELECT * FROM pegawai ORDER BY g_id ASC";
 				      $qr=mysqli_query($db,$query);
+=======
+				      $query = "SELECT * FROM pegawai ORDER BY G_ID ASC";
+				      $qr=mysqli_query($sqlconnect,$query);
+>>>>>>> Stashed changes
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
 						echo ("Query cannot be executed!<br>");
-						echo ("SQL Error : ".mysqli_error($db));
+						echo ("SQL Error : ".mysqli_error($sqlconnect));
 						}
 
 				      //buat perulangan untuk element tabel dari data mahasiswa
@@ -66,14 +71,11 @@ include ("inc/navbar.php");?>
 				        echo "<td>$data[g_bagian]</td>";
 				        echo "<td>$data[g_jk]</td>";
 				        // membuat link untuk mengedit dan menghapus data
-				        echo '<td><a href="edit.php?id=' . $data['g_id'] . '">Edit</a></td>';
-
-						echo '<td><a href="delete.php?id=' . $data['g_id'] . '">Delete</a></td>';
+				        echo "<td><a href='edit.php?id=$data[g_id]'>Edit</a>";
+						echo "<td><a href='delete.php?id=$data[g_id]'>Delete</a>";
 
 				        echo "</tr>";
 				      }
-
-			
 				      ?>
 				    </table>
 

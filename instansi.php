@@ -41,11 +41,11 @@ include ("inc/navbar.php");?>
 				 <?php
 				      include 'inc/dbconn.php';
 				      $query = "SELECT * FROM instansi ORDER BY I_ID ASC";
-				      $qr=mysqli_query($db,$query);
+				      $qr=mysqli_query($sqlconnect,$query);
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
 						echo ("Query cannot be executed!<br>");
-						echo ("SQL Error : ".mysqli_error($db));
+						echo ("SQL Error : ".mysqli_error($sqlconnect));
 						}
 
 				      //buat perulangan untuk element tabel dari data mahasiswa
