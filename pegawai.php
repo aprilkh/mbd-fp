@@ -43,7 +43,7 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-				      $query = "SELECT * FROM pegawai ORDER BY G_ID ASC";
+				      $query = "SELECT * FROM pegawai ORDER BY g_id ASC";
 				      $qr=mysqli_query($db,$query);
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
