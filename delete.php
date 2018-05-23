@@ -1,5 +1,6 @@
 <?php 
 //include the database connectivity setting
+<<<<<<< HEAD
 if(isset($_GET['s_id'])){
     include('inc/dbconn.php');
 
@@ -42,4 +43,12 @@ else{
     echo '<script>window.history.back()</script>';
     
 }
+=======
+include_once ("inc/dbconn.php");
+
+$id = $_GET['G_ID'];
+$query = mysqli_query($db, "DELETE FROM pegawai WHERE G_ID = $id");
+
+header("Location:pegawai.php");
+>>>>>>> master
 ?>

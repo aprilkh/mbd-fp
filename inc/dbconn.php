@@ -1,8 +1,9 @@
 <?php
-$db=mysqli_connect("localhost","root","","FP");
-//Check connection
-if (mysqli_connect_errno()) {
-	echo "Connect failed: %s\n", mysqli_connect_error($db);
-	exit();
-}
+$host = '127.0.0.1';
+$user = 'root';
+$pass = '';
+$db = 'FP';
+
+$sqlconnect = new mysqli($host, $user, $pass, $db) or die("tida bisa connect");
+error_reporting(E_ALL ^ E_NOTICE);
 ?>

@@ -40,13 +40,18 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
+<<<<<<< HEAD
 				      $query = mysqli_query($db,"SELECT * FROM alat_or ORDER BY a_id ASC");
 				      $rows = mysqli_num_rows($query);
 
+=======
+				      $query = "SELECT * FROM alat_or ORDER BY a_id ASC";
+				      $qr=mysqli_query($sqlconnect,$query);
+>>>>>>> master
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($query==false){
 						echo ("Query cannot be executed!<br>");
-						echo ("SQL Error : ".mysqli_error($db));
+						echo ("SQL Error : ".mysqli_error($sqlconnect));
 						}
 
 				      //buat perulangan untuk element tabel dari data mahasiswa
