@@ -18,7 +18,11 @@ include ("inc/dbconn.php");?>
 <?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
-
+<div class="container">
+    <br>
+    <br>
+  <div class="row">
+    
     <!-- tampilan view -->
     <section id="intro" class="intro">
             <div class="slogan">

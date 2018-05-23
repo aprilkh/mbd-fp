@@ -25,23 +25,24 @@ include ("inc/navbar.php");?>
     
 
     <!-- tampilan view -->
-                <h2>Function</h2>
-                <h3>Menampilkan total dari alat olahraga tertentu yang dipinjam</h3>
+                <h2>Procedure</h2>
+                <h3>Menampilkan nama alat yang dipinjam pada instansi tertentu</h3>
             
         <div class="transparan1">
             <table class="table table-bordered"> 
             <tr>
-                <td>Total Alat</td>
+                <td>Nama Alat</td>
+                <td>Nama Merk</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT DISTINCT jmltotal('A03') AS Total_Alat FROM alat_or";
+                $query = "CALL ins('I02')";
                 $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['Total_Alat'].' </td>
+                        <td> '.$data['ins'].' </td>
                     </tr>';
                 }
             ?>

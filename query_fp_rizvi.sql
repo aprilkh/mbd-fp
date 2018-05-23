@@ -8,10 +8,7 @@ JOIN denda d ON t.t_id = d.t_id
 ORDER BY d_jumlahrusak DESC
 LIMIT 1;
 
--- 
-SELECT * FROM view_rizvi
-
--- 2 TRIGGER --
+-- 2. TRIGGER
 -- Mencatat setiap ada instansi baru (insert)
 
 CREATE TABLE log_instansi(
@@ -28,7 +25,6 @@ ALTER TABLE log_instansi ADD
 `status` VARCHAR(200)
 );
 
--- Insert new data
 DELIMITER$$
 CREATE OR REPLACE TRIGGER historis_insert
 AFTER INSERT ON instansi
@@ -40,7 +36,7 @@ DELIMITER$$
 
 INSERT INTO instansi VALUES ('I31','PT. Kenangan Indah','Jl. kenangan menuju, bahagia','087689785544');
 
--- FUNCTION
+-- 3. FUNCTION
 -- Menampilkan total dari alat olahraga tertentu yang dipinjam
 
 DELIMITER $$
