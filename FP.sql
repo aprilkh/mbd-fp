@@ -283,30 +283,4 @@ INSERT INTO denda VALUES ('D13','T13','Bola Sepak Takraw','6','180000','BELUM LU
 INSERT INTO denda VALUES ('D14','T23','Bola Kaki','1','28000','BELUM LUNAS');
 INSERT INTO denda VALUES ('D15','T04','Tolak Peluru','1','38000','LUNAS');
 
--- Rizvi 16-037
-
--- 1. View
--- Menampilkan pegawai yang melayani transaksi pada alat olahraga Bola Basket.
-CREATE VIEW basket AS
-SELECT g.*
-FROM pegawai g JOIN transaksi t ON g.g_id = t.g_id
-JOIN penyewaan s ON t.t_id = s.t_id
-JOIN alat_or a ON s.a_id = a.a_id
-WHERE a.a_nama = 'Bola Basket'
-
-SELECT * FROM basket
-
--- 2. Trigger
-
--- Procedure
-DELIMITER$$
-CREATE OR REPLACE PROCEDURE suara(a_id CHAR(3))
-BEGIN
- SELECT DISTINCT a_nama
- FROM alat_or a JOIN penyewaan s ON a.a_id = s.a_id
- JOIN peminjam m ON s.m_id = m.m_id
- JOIN instansi i ON m.i_id = i.i_id
- WHERE i.i_nama = 'PT. Suara Indah Raya';
-END$$
-
-CALL suara(0)
+DELETE FROM penyewaan WHERE s_id='S02'

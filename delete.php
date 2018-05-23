@@ -1,9 +1,45 @@
 <?php 
 //include the database connectivity setting
-include ("inc/dbconn.php");
+if(isset($_GET['s_id'])){
+    include('inc/dbconn.php');
 
-$id = $_GET['G_ID'];
-$qr = mysqli_query($mysqli, "DELETE FROM PEGAWAI WHERE G_ID = $id");
+    // Get id from URL to delete that user
+    $id = $_GET['s_id'];
+     
+    // Delete user row from table based on given id
+    $qr = mysqli_query("SELECT s_id FROM penyewaan WHERE s_id='$id'") or die(mysql_error());
+     
+    if(mysql_num_rows($qr) == 0){
+            
+            //jika data tidak ada, maka redirect atau dikembalikan ke halaman beranda
+            echo '<script>window.history.back()</script>';
+    }else{
+            
+            //jika data ada di database, maka melakukan query 
+            
+            $delqr = mysql_query("DELETE FROM penyewaan WHERE s_id='$id'");
+            
+            //jika query DELETE berhasil
+            if($delqr){
+                
+                echo 'Data siswa berhasil di hapus! ';      //Pesan jika proses hapus berhasil
+                echo '<a href="penyewaan.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+                
+            }else{
+                
+                echo 'Gagal menghapus data! ';      //Pesan jika proses hapus gagal
+                echo '<a href="penyewaan.php">Kembali</a>'; //membuat Link untuk kembali ke halaman beranda
+            
+            }
+            
+        }
+        
+}
 
-header("Location:pegawai.php")
+else{
+    
+    //redirect atau dikembalikan ke halaman beranda
+    echo '<script>window.history.back()</script>';
+    
+}
 ?>

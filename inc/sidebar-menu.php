@@ -6,7 +6,7 @@
 				
 		 <li class="dropdown">
 
-		 <a href="php-db-template.php"  class="btn btn-warning btn-block">Home <span class="fui-home" ></span></a>
+		 <a href="depan.php"  class="btn btn-warning btn-block">Home <span class="fui-home" ></span></a>
 
           <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Table <span class="caret"></span></a>
           <ul class="dropdown-menu" >
@@ -30,7 +30,7 @@
 				<li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">View <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="view-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>

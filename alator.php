@@ -40,10 +40,11 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-				      $query = "SELECT * FROM alat_or ORDER BY a_id ASC";
-				      $qr=mysqli_query($db,$query);
+				      $query = mysqli_query($db,"SELECT * FROM alat_or ORDER BY a_id ASC");
+				      $rows = mysqli_num_rows($query);
+
 				      //mengecek apakah ada error ketika menjalankan query
-				      if($qr==false){
+				      if($query==false){
 						echo ("Query cannot be executed!<br>");
 						echo ("SQL Error : ".mysqli_error($db));
 						}
@@ -51,7 +52,7 @@ include ("inc/navbar.php");?>
 				      //buat perulangan untuk element tabel dari data mahasiswa
 				       // hasil query akan disimpan dalam variabel $data dalam bentuk array
 				      // kemudian dicetak dengan perulangan while
-				      while($data = mysqli_fetch_array($qr))
+				      while($data = mysqli_fetch_array($query))
 				      {
 				        // mencetak / menampilkan data
 				        echo "<tr>";
@@ -60,10 +61,6 @@ include ("inc/navbar.php");?>
 				        echo "<td>$data[a_merk]</td>";
 				        echo "<td>$data[a_hargasewa]</td>";
 				        // membuat link untuk mengedit dan menghapus data
-				        echo '<td><a href="edit.php?id=' . $data['g_id'] . '">Edit</a></td>';
-
-						echo '<td><a href="delete.php?id=' . $data['g_id'] . '">Delete</a></td>';
-
 				        echo "</tr>";
 				      }
 				      ?>
