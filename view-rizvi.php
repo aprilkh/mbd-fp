@@ -33,10 +33,11 @@ include ("inc/navbar.php");?>
                 <td>Total Denda</td>
             </tr>
             <?php
-                $query=mysqli_query($db,"SELECT * FROM view_rizvi");
-                $rows = mysqli_num_rows($query);
+                include 'inc/dbconn.php';
+                $query = "SELECT * FROM view_rizvi";
+                $qr=mysqli_query($sqlconnect,$query);
 
-                while($data = mysqli_fetch_array($query)){
+                while($data = mysqli_fetch_array($qr)){
                     echo '
                     <tr>
                         <td> '.$data['a_nama'].' </td>

@@ -40,17 +40,14 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-<<<<<<< HEAD
-				     
-				      $query = mysqli_query($db,"SELECT * FROM instansi ORDER BY I_ID ASC");
-               		  $rows = mysqli_num_rows($query);
-
-=======
+// <<<<<<< HEAD
+				    
+// =======
 				      $query = "SELECT * FROM instansi ORDER BY I_ID ASC";
 				      $qr=mysqli_query($sqlconnect,$query);
->>>>>>> master
+// >>>>>>> master
 				      //mengecek apakah ada error ketika menjalankan query
-				      if($query==false){
+				      if($qr==false){
 						echo ("Query cannot be executed!<br>");
 						echo ("SQL Error : ".mysqli_error($sqlconnect));
 						}
@@ -58,7 +55,7 @@ include ("inc/navbar.php");?>
 				      //buat perulangan untuk element tabel dari data mahasiswa
 				       // hasil query akan disimpan dalam variabel $data dalam bentuk array
 				      // kemudian dicetak dengan perulangan while
-				      while($data = mysqli_fetch_array($query))
+				      while($data = mysqli_fetch_array($qr))
 				      {
 				        // mencetak / menampilkan data
 				        echo "<tr>";
