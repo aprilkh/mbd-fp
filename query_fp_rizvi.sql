@@ -91,6 +91,7 @@ LEFT OUTER JOIN penyewaan s
 
 		
 -- cursor belum
+-- Menampilkan nama peminjam beserta instansinya
 
 DELIMITER$$
 CREATE OR REPLACE PROCEDURE eksplisit()

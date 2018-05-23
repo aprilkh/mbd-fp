@@ -5,7 +5,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
           </button>
-          <a class="navbar-brand">Sewawaw</a>
+          <a class="navbar-brand" href="depan.php">Sewawaw</a>
         </div>
         <div class="navbar-collapse collapse">
       </div>

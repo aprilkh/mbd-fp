@@ -18,18 +18,21 @@ include ("inc/dbconn.php");?>
 <?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
+
 <div class="container">
     <br>
     <br>
   <div class="row">
     
     <!-- tampilan view -->
-    <section id="intro" class="intro">
-            <div class="slogan">
+    <div class="col-md-9" name="maincontent" id="maincontent">
+        <div id="exercise" name="exercise" class="panel panel-info">
+        <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
+            <div class="panel-body">
+            <!-- ***********Edit your content STARTS from here******** -->
                 <h2>View</h2>
                 <h3>Menampilkan alat yang paling banyak rusak</h3>
-            </div>
-        <div class="transparan1">
+            
             <table class="table table-bordered"> 
             <tr>
                 <td>Nama Alat</td>
@@ -50,19 +53,44 @@ include ("inc/navbar.php");?>
                     </tr>';
                 }
             ?>
-        </table>
+            </table>
 
-        </div>
-    </section>
-    
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+                </script>
+            </div> <!--body panel main -->
+        </div><!--toc -->
+    </div><!-- end main content -->
+
+       <div class="col-md-3">
+        <?php 
+        //include the sidebar menu
+        include ("inc/sidebar-menu.php");?>
+    </div><!-- end main menu -->
+  </div>
+</div><!-- end container -->
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script> 
-    <script src="js/jquery.scrollTo.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom.js"></script>
+<?php 
+//include the footer
+include ("inc/footer.php");?>
 
 </body>
 </html>

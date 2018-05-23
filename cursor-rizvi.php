@@ -18,38 +18,44 @@ include ("inc/dbconn.php");?>
 <?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
+
 <div class="container">
     <br>
     <br>
   <div class="row">
     
-   <!--  tampilan function -->
+    <!-- tampilan view -->
     <div class="col-md-9" name="maincontent" id="maincontent">
         <div id="exercise" name="exercise" class="panel panel-info">
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
-                <h2>Function</h2>
-                <h3>Menampilkan total dari alat olahraga tertentu yang dipinjam</h3>
-            
+            <!-- ***********Edit your content STARTS from here******** -->
+                <h2>Cursor</h2>
+                <h3>Menampilkan nama peminjam beserta instansinya</h3>
+
             <table class="table table-bordered"> 
             <tr>
-                <td>Total Alat</td>
+                <td>Nama Alat</td>
+                <td>Jumlah Rusak</td>
+                <td>Total Denda</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT DISTINCT jmltotal('A03') AS Total_Alat FROM alat_or";
+                $query = "SELECT * FROM view_rizvi";
                 $qr=mysqli_query($sqlconnect,$query);
 
-                while($data = mysqli_fetch_assoc($qr)){
+                while($data = mysqli_fetch_array($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['Total_Alat'].' </td>
+                        <td> '.$data['a_nama'].' </td>
+                        <td> '.$data['d_jumlahrusak'].' </td>
+                        <td> '.$data['d_totalharga'].' </td>
                     </tr>';
                 }
             ?>
-        </table>
+            </table>
 
-        <script>
+            <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
                 }
@@ -85,7 +91,6 @@ include ("inc/navbar.php");?>
 <?php 
 //include the footer
 include ("inc/footer.php");?>
-
 
 </body>
 </html>

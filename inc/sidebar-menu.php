@@ -38,7 +38,7 @@
 				<li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Trigger <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="trigger-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		          </ul></li>
@@ -46,7 +46,7 @@
 				<li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Function <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="function-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
@@ -54,7 +54,7 @@
 		        <li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Procedure <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="procedure-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		           </ul></li>
@@ -62,7 +62,7 @@
 		        <li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Index <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="index-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
@@ -70,7 +70,7 @@
 		        <li class="dropdown">
 		         <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Join <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="join-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		           </ul></li>
@@ -78,7 +78,7 @@
 		        <li class="dropdown">
 		        <a href="#" class="btn btn-info btn-block" data-toggle="dropdown">Cursor <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		        	<li><a href="view.php">Rizvi Sofbrina</a></li>
+		        	<li><a href="cursor-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>

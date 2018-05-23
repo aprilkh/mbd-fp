@@ -23,33 +23,39 @@ include ("inc/navbar.php");?>
     <br>
   <div class="row">
     
-   <!--  tampilan function -->
+
+    <!-- tampilan index -->
     <div class="col-md-9" name="maincontent" id="maincontent">
         <div id="exercise" name="exercise" class="panel panel-info">
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
-                <h2>Function</h2>
-                <h3>Menampilkan total dari alat olahraga tertentu yang dipinjam</h3>
-            
+                <h2>Index</h2>
+                <h3>Memberikan index berdasarkan nama instansi</h3>
+    
             <table class="table table-bordered"> 
             <tr>
-                <td>Total Alat</td>
+                <td>Id Instansi</td>
+                <td>Nama Instansi</td>
+                <td>Alamat Instansi</td>
+                <td>No Telp. Instansi</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT DISTINCT jmltotal('A03') AS Total_Alat FROM alat_or";
+                $query = "SELECT * FROM instansi WHERE i_nama = 'PT. Dharmala Intiland'";
                 $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['Total_Alat'].' </td>
+                        <td> '.$data['i_id'].' </td>
+                        <td> '.$data['i_nama'].' </td>
+                        <td> '.$data['i_alamat'].' </td>
+                        <td> '.$data['i_notelp'].' </td>
                     </tr>';
                 }
             ?>
         </table>
-
-        <script>
+            <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
                 }
@@ -68,7 +74,7 @@ include ("inc/navbar.php");?>
                     }
                   }
                 }
-                </script>
+            </script>
             </div> <!--body panel main -->
         </div><!--toc -->
     </div><!-- end main content -->
@@ -85,7 +91,6 @@ include ("inc/navbar.php");?>
 <?php 
 //include the footer
 include ("inc/footer.php");?>
-
 
 </body>
 </html>
