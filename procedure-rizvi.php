@@ -31,7 +31,42 @@ include ("inc/navbar.php");?>
             <div class="panel-body">
                 <h2>Procedure</h2>
                 <h3>Menampilkan nama alat yang dipinjam pada instansi tertentu</h3>
-            
+        
+        <!-- Edit -->
+        <form class="form-inline" role="form" name="" action="" method="GET">
+          <div class="form-group">
+            <input class="form-control" name="i_id" type="text" placeholder="ID Instansi(Ex: I01)">
+            <input class="btn btn-embosed btn-primary" type="submit" value="Search">
+          </div>
+        </form><hr>
+
+        <?php
+        include 'inc/dbconn.php';
+        //check staff name input by the user if null
+        if(!isset($_GET['i_id'])){
+          
+          //exit();
+        }else{//if there's user search - then perform db search
+        //Create SQL query
+          $i_id = $_GET['i_id'];
+          $i_nama = $_GET['i_nama'];
+          $query = "CALL ins('$i_id')";
+          //Execute the query
+          $qr=mysqli_query($sqlconnect,$query);
+          if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($sqlconnect));
+          }
+          if(mysqli_num_rows($qr)==0)
+          {
+          echo ("Sorry, seems that no record found by the keyword $i_id...<br>");
+          }
+          else
+          {//there is/are record(s)
+          ?>
+            <h5>Search result for the  "<?php echo $i_id; ?>"</h5><br>
+
+
             <table class="table table-bordered"> 
             <tr>
                 <td>Nama Alat</td>
@@ -39,9 +74,7 @@ include ("inc/navbar.php");?>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "CALL ins('I02')";
-                $qr=mysqli_query($sqlconnect,$query);
-
+                
                 while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
@@ -50,7 +83,14 @@ include ("inc/navbar.php");?>
                     </tr>';
                 }
             ?>
+            <?php
+          }//end of records
+        ?>
         </table>
+                <?php
+        }//end if there are records
+      //end db search
+      ?>
             <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");

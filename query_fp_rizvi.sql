@@ -67,7 +67,7 @@ BEGIN
  WHERE id = i.i_id;
 END$$
 
-CALL ins('I02')
+CALL ins('I22')
 
 -- index
 -- Memberikan index berdasarkan nama instansi

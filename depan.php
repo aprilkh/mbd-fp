@@ -30,9 +30,7 @@ include ("inc/navbar.php");?>
 		<div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
 			<div class="panel-body">
 
-			<!-- ***********Edit your content STARTS from here******** -->
-				<!-- PDM<br>
-				<center><img src="img/pdm.png" style="width: 600px; padding-top: 40px;"></center> -->
+				
 			</div> <!--body panel main -->
 		</div><!--toc -->
     </div><!-- end main content -->

@@ -31,14 +31,44 @@ include ("inc/navbar.php");?>
                 <h2>Function</h2>
                 <h3>Menampilkan total dari alat olahraga tertentu yang dipinjam</h3>
             
+                <!-- Edit -->
+        <form class="form-inline" role="form" name="" action="" method="GET">
+          <div class="form-group">
+            <input class="form-control" name="a_id" type="text" placeholder="ID Alat(Ex: A01)">
+            <input class="btn btn-embosed btn-primary" type="submit" value="Search">
+          </div>
+        </form><hr>
+
+        <?php
+        include 'inc/dbconn.php';
+        //check staff name input by the user if null
+        if(!isset($_GET['a_id'])){
+          //exit();
+        }else{//if there's user search - then perform db search
+        //Create SQL query
+          $a_id = $_GET['a_id'];
+          $query = "SELECT DISTINCT jmltotal('$a_id') AS Total_Alat FROM alat_or";
+          //Execute the query
+          $qr=mysqli_query($sqlconnect,$query);
+          if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($sqlconnect));
+          }
+          if(mysqli_num_rows($qr)==0)
+          {
+          echo ("Sorry, seems that no record found by the keyword $a_id...<br>");
+          }
+          else
+          {//there is/are record(s)
+          ?>
+            <h5>Search result for the "<?php echo $a_id; ?>"</h5><br>
+
             <table class="table table-bordered"> 
             <tr>
                 <td>Total Alat</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT DISTINCT jmltotal('A03') AS Total_Alat FROM alat_or";
-                $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_assoc($qr)){
                     echo '
@@ -47,7 +77,15 @@ include ("inc/navbar.php");?>
                     </tr>';
                 }
             ?>
+        <?php
+          }//end of records
+        ?>
+
         </table>
+        <?php
+        }//end if there are records
+      //end db search
+      ?>
 
         <script>
                 function myFunction() {

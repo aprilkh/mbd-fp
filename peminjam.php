@@ -43,9 +43,6 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-// <<<<<<< HEAD
-				  
-// =======
 				      $query = "SELECT * FROM peminjam ORDER BY M_ID ASC";
 				      $qr=mysqli_query($sqlconnect,$query);
 // >>>>>>> master
@@ -75,6 +72,7 @@ include ("inc/navbar.php");?>
 				      }
 				      ?>
 				    </table>
+				    
 
 				<script>
 				function myFunction() {

@@ -1,23 +1,23 @@
 <?php 
 //include the database connectivity setting
-include ("../inc/dbconn.php");?>
+include ("inc/dbconn.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Peminjaman Alat Olahraga</title>
+  <title>Penyewaan Alat Olahraga</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Loading Flat UI Pro -->
-    <link href="../css/flat-ui-pro.css" rel="stylesheet">
-    <link rel="shortcut icon" href="../img/favicon.png">
+    <link href="css/flat-ui-pro.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
   
 </head>
 <body>
 
 <?php 
 //include the navigation bar
-include ("../inc/navbar.php");?>
+include ("inc/navbar.php");?>
 
 <div class="container">
 	<br>
@@ -33,38 +33,9 @@ include ("../inc/navbar.php");?>
 			<div class="panel-body">
 			<!-- ***********Edit your content STARTS from here******** -->
 			
-				Simple Staff Search<br>
-				<form class="form-inline" role="form" name="" action="" method="GET">
-					<div class="form-group">
-					  <input class="form-control" name="staffname" type="text" placeholder="Staff name...">
-					  <input class="btn btn-embosed btn-primary" type="submit" value="Search">
-					</div>
-				</form>
-				<hr>
-				
 				
 				<?php
-				include '../inc/dbconn.php';
-				//check staff name input by the user if null
-				if(!isset($_GET['staffname'])){
-					echo "Search result here will be displayed here<br>";
-					//exit();
-				}
-				else{//if there's user search - then perform db search
-				//Create SQL query
-					$staffname=$_GET['staffname'];
-					$query="select EMPNO, FIRSTNAME, LASTNAME, WORKDEPT, PHONENO
-					from employee where FIRSTNAME like '%$staffname%' or LASTNAME like '%staffname%'";
-					//Execute the query
-					$qr=mysqli_query($sqlconnect,$query);
-					if($qr==false){
-						echo ("Query cannot be executed!<br>");
-						echo ("SQL Error : ".mysqli_error($sqlconnect));
-					}
-					
-					//Check the record effected, if no records,
-					//display a message
-
+				
 				//display a message
 				if(mysqli_num_rows($qr)==0)
 				{
@@ -122,7 +93,7 @@ include ("../inc/navbar.php");?>
     <div class="col-md-3">
 		<?php 
 		//include the sidebar menu
-		include ("../inc/sidebar-menu.php");?>
+		include ("inc/sidebar-menu.php");?>
     </div><!-- end main menu -->
   </div>
 </div><!-- end container -->
@@ -130,7 +101,7 @@ include ("../inc/navbar.php");?>
 
 <?php 
 //include the footer
-include ("../inc/footer.php");?>
+include ("inc/footer.php");?>
 
 </body>
 </html>

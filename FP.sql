@@ -282,5 +282,3 @@ INSERT INTO denda VALUES ('D12','T12','Bantalan Target Panahan','3','30000','BEL
 INSERT INTO denda VALUES ('D13','T13','Bola Sepak Takraw','6','180000','BELUM LUNAS');
 INSERT INTO denda VALUES ('D14','T23','Bola Kaki','1','28000','BELUM LUNAS');
 INSERT INTO denda VALUES ('D15','T04','Tolak Peluru','1','38000','LUNAS');
-
-DELETE FROM penyewaan WHERE s_id='S02'
