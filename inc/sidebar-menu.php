@@ -40,7 +40,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="trigger-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="trigger-april.php">Aprilia Khairunnisa</a></li>
 		          </ul></li>
 
 				<li class="dropdown">
@@ -80,7 +80,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="cursor-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="cursor-april.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
 		        <hr>
 

@@ -1,11 +1,11 @@
 -- view
-CREATE OR REPLACE VIEW view_april AS
-SELECT DISTINCT m.m_nama
-FROM peminjam m
-WHERE NOT EXISTS (SELECT m2.m_id 
-FROM peminjam m2 JOIN penyewaan s2 ON m2.m_id = s2.m_id 
-JOIN transaksi t2 ON s2.t_id = t2.t_id JOIN denda d2 ON t2.t_id = d2.d_id
-WHERE m.m_id = m2.m_id);
+-- menampilkan pemijkam yang belum pernah merusakkan alat or
+CREATE OR REPLACE VIEW view_april AS			
+SELECT m.m_id, m.m_nama
+FROM peminjam m 
+LEFT JOIN penyewaan s ON (m.m_id=s.m_id) 
+LEFT JOIN denda d ON (s.t_id = d.t_id)
+WHERE d.t_id IS NULL;
 
 -- function
 -- menampilkan jumlah transaksi yang dilayani oleh pegawai tertentu
@@ -40,3 +40,49 @@ CALL potongan (5000000);
 -- index
 -- memberikan indeks berdasarkan nama alat olahraga
 CREATE OR REPLACE INDEX index_alat ON alat_or(a_id);
+
+-- join
+-- Mencari denda terbanyak pada bulan tertentu.
+SELECT d.d_totaldenda
+FROM denda d JOIN transaksi t ON d.t_id = t.t_id JOIN penyewaan s ON s.t_id = t.t_id
+
+-- cursor
+-- Menampilkan nama pegawai dan transaksi yang dilakukan
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE cursorpeg(id CHAR(3))
+BEGIN
+SELECT g.g_nama, t.t_id
+FROM pegawai g, transaksi t
+WHERE t.g_id = id AND g.g_id = t.g_id;
+END $$
+DELIMITER $$
+ 
+CALL cursorpeg ('G01');
+
+-- trigger
+-- Mencatat setiap ada update jumlah stok pada tabel alat OR 
+CREATE TABLE trigger_april(
+ a_id CHAR(3),
+ a_nama VARCHAR(50),
+ a_merk VARCHAR(20),
+ a_hargasewa INT,
+ a_stok INT
+ );
+ 
+ALTER TABLE trigger_april ADD(
+`tanggal_perubahan` DATETIME,
+`status` VARCHAR(30)
+);
+
+DELIMITER$$
+CREATE TRIGGER tr_april AFTER UPDATE ON alat_or
+FOR EACH ROW
+BEGIN
+   INSERT INTO trigger_april VALUES (old.a_id, old.a_nama, old.a_merk, old.a_hargasewa, old.a_stok, SYSDATE(), 'UPDATE');
+   INSERT INTO trigger_april VALUES (new.a_id, new.a_nama, new.a_merk, new.a_hargasewa, new.a_stok, SYSDATE(), 'UPDATE');
+END$$
+DELIMITER$$
+ 
+ UPDATE alat_or
+ SET a_stok= '49'
+ WHERE a_id = 'A11';

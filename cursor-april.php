@@ -18,41 +18,80 @@ include ("inc/dbconn.php");?>
 <?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
-
 <div class="container">
     <br>
     <br>
   <div class="row">
     
-    <!-- tampilan view -->
-    <div class="col-md-9" name="maincontent" id="maincontent">
+
+    <!-- tampilan porcedure -->
+       <div class="col-md-9" name="maincontent" id="maincontent">
         <div id="exercise" name="exercise" class="panel panel-info">
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
-            <!-- ***********Edit your content STARTS from here******** -->
-                <h2>View</h2>
-                <h3>Menampilkan peminjam yang belum pernah merusakkan alat OR</h3>
-            
+                <h2>Cursor</h2>
+                <h3>Menampilkan nama pegawai dan transaksi yang dilakukan</h3>
+        
+        <!-- Edit -->
+        <form class="form-inline" role="form" name="" action="" method="GET">
+          <div class="form-group">
+            <input class="form-control" name="g_id" type="text" placeholder="ID Pegawai(Ex: G01)">
+            <input class="btn btn-embosed btn-primary" type="submit" value="Search">
+          </div>
+        </form><hr>
+
+        <?php
+        include 'inc/dbconn.php';
+        //check staff name input by the user if null
+        if(!isset($_GET['g_id'])){
+          
+          //exit();
+        }else{//if there's user search - then perform db search
+        //Create SQL query
+          $g_id = $_GET['g_id'];
+          $g_nama = $_GET['g_nama'];
+          $t_id = $_GET['t_id'];
+          $query = "CALL cursorpeg ('$g_id')";
+          //Execute the query
+          $qr=mysqli_query($sqlconnect,$query);
+          if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($sqlconnect));
+          }
+          if(mysqli_num_rows($qr)==0)
+          {
+          echo ("Sorry, seems that no record found by the keyword $g_id...<br>");
+          }
+          else
+          {//there is/are record(s)
+          ?>
+            <h5>Search result for the  "<?php echo $g_id; ?>"</h5><br>
+
+
             <table class="table table-bordered"> 
-             <tr>
-                <td>ID</td>
-                <td>Nama Peminjam</td>
+            <tr>
+                <td>Nama Pegawai</td>
+                <td>ID Transaksi</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT * FROM view_april";
-                $qr=mysqli_query($sqlconnect,$query);
-
-                while($data = mysqli_fetch_array($qr)){
+                
+                while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['m_id'].' </td>
-                        <td> '.$data['m_nama'].' </td>
+                        <td> '.$data['g_nama'].' </td>
+                        <td> '.$data['t_id'].' </td>
                     </tr>';
                 }
             ?>
-            </table>
-
+            <?php
+          }//end of records
+        ?>
+        </table>
+                <?php
+        }//end if there are records
+      //end db search
+      ?>
             <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
@@ -73,6 +112,7 @@ include ("inc/navbar.php");?>
                   }
                 }
                 </script>
+
             </div> <!--body panel main -->
         </div><!--toc -->
     </div><!-- end main content -->
