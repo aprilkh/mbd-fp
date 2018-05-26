@@ -38,6 +38,7 @@ include ("inc/navbar.php");?>
                 <input class="btn btn-embosed btn-primary" type="submit" value="Search">
               </div>
             </form><br>
+            
     <?php
     include 'inc/dbconn.php';
     if(!isset($_GET['a_id'])){
@@ -97,7 +98,7 @@ include ("inc/navbar.php");?>
           }//end of records
         ?>
         </table>
-        <button class="btn btn-danger btn-block login" type="submit">UPDATE</button>
+        <a href="log_trigger.php"> <button class="btn btn-danger btn-block login" type="submit">UPDATE STOK</button></a>
         <?php
         }//end if there are records
       //end db search
