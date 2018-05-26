@@ -14,7 +14,8 @@ include ("inc/dbconn.php");?>
   
 </head>
 <body>
-	<?php 
+	
+<?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
 <div class="container">
@@ -23,7 +24,7 @@ include ("inc/navbar.php");?>
   <div class="row">
     
 
-    <!-- tampilan index -->
+    <!-- tampilan TRIGGER -->
     <div class="col-md-9" name="maincontent" id="maincontent">
         <div id="exercise" name="exercise" class="panel panel-info">
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
@@ -36,66 +37,72 @@ include ("inc/navbar.php");?>
                 <input class="form-control" name="a_id" type="text" placeholder="ID ALat OR(Ex: A01)">
                 <input class="btn btn-embosed btn-primary" type="submit" value="Search">
               </div>
-            </form>
+            </form><br>
     <?php
-      include 'log.php';
-      $query = "SELECT * FROM log_snack ORDER BY id_snack ASC";
-      $result = mysqli_query($link, $query);
-      //mengecek apakah ada error ketika menjalankan query
-      if(!$result){
-        die ("Query Error: ".mysqli_errno($link).
-           " - ".mysqli_error($conn));
-      }
+    include 'inc/dbconn.php';
+    if(!isset($_GET['a_id'])){
+          
+          //exit();
+        }else{//if there's user search - then perform db search
+        //Create SQL query
+          $a_id = $_GET['a_id'];
+          $a_nama = $_GET['a_nama'];
+          $a_merk = $_GET['a_merk'];
+          $a_hargasewa = $_GET['a_hargasewa'];
+          $a_stok = $_GET['a_stok'];
+          // $tanggal_perubahan = $_GET['tanggal_perubahan'];
+          // $status = $_GET['status'];
 
-      //buat perulangan untuk element tabel dari data mahasiswa
-       // hasil query akan disimpan dalam variabel $data dalam bentuk array
-      // kemudian dicetak dengan perulangan while
-      while($data = mysqli_fetch_assoc($result))
-      {
-        // mencetak / menampilkan data
-        echo "<tr>";
-        echo "<td>$data[id_snack]</td>"; //menampilkan data nama
-        echo "<td>$data[nama_snack]</td>"; //menampilkan data fakultas
-        echo "<td>$data[harga_persnack]</td>"; //menampilkan data jurusan
-        echo "<td>$data[deskripsi_snack]</td>";
-        echo "<td>$data[tgl_perubahan]</td>";
-        echo "<td>$data[status]</td>"; //menampilkan data nama
-        echo "</tr>";
-      }
+          $query = "SELECT * FROM alat_or WHERE a_id = '$a_id'";
+          //Execute the query
+          $qr=mysqli_query($sqlconnect,$query);
+          if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($sqlconnect));
+          }
+          if(mysqli_num_rows($qr)==0)
+          {
+          echo ("Sorry, seems that no record found by the keyword $g_id...<br>");
+          }
+          else
+          {//there is/are record(s)
+          ?>
+            <h5>Search result for the  "<?php echo $a_id; ?>"</h5><br>
+
+            <table class="table table-bordered"> 
+            <tr>
+                <td>A_ID</td>
+			    <td>NAMA</td>
+			    <td>MERK</td>
+			    <td>HARGASEWA</td>
+		        <td>STOK</td>
+ 	        </tr>
+
+            <?php
+                include 'inc/dbconn.php';
+                
+                while($data = mysqli_fetch_assoc($qr)){
+                    echo '
+                    <tr>
+                        <td> '.$data['a_id'].' </td>
+                        <td> '.$data['a_nama'].' </td>
+                        <td> '.$data['a_merk'].' </td>
+                        <td> '.$data['a_hargasewa'].' </td>
+                        <td> '.$data['a_stok'].' </td>
+                      
+                    </tr>';
+                }
+            ?>
+            <?php
+          }//end of records
+        ?>
+        </table>
+        <button class="btn btn-danger btn-block login" type="submit">UPDATE</button>
+        <?php
+        }//end if there are records
+      //end db search
       ?>
-<html>
-<head>	
-	<title>Edit User Data</title>
-</head>
- 
-<body>
-	<a href="index.php">Home</a>
-	<br/><br/>
 	
-	<form name="update" method="post" action="trigger-april.php">
-		<table border="0">
-			<tr> 
-				<td>Nama</td>
-				<td><input type="text" name="name" value=<?php echo $a_nama;?>></td>
-			</tr>
-			<tr> 
-				<td>Merk</td>
-				<td><input type="text" name="merk" value=<?php echo $a_merk;?>></td>
-			</tr>
-			<tr> 
-				<td>Harga Sewa</td>
-				<td><input type="text" name="harga sewa" value=<?php echo $a_hargasewa;?>></td>
-			</tr>
-			<tr> 
-				<td>Stok</td>
-				<td><input type="text" name="stok" value=<?php echo $a_stok;?>></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="a_id" value=<?php echo $_GET['a_id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
             <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
@@ -116,7 +123,7 @@ include ("inc/navbar.php");?>
                   }
                 }
             </script>
-            </div> <!--body panel main -->
+			</div> <!--body panel main -->
         </div><!--toc -->
     </div><!-- end main content -->
 
