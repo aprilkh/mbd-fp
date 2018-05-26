@@ -80,15 +80,12 @@ WHERE i_nama = 'PT. Dharmala Intiland';
 -- join belum
 -- Menampilkan  alat yang belum pernah di sewa
 
-SELECT a.*
+SELECT a.a_id, a.a_nama, a.a_merk
 FROM alat_or a
-WHERE NOT EXISTS(SELECT a.*
-		FROM alat_or a1 JOIN penyewaan s1 ON(a1.a_id=s1.a_id)
-		WHERE a.a_id = a1.a_id
-		)
-SELECT s.*
-LEFT OUTER JOIN penyewaan s
-
+WHERE NOT EXISTS (SELECT a1.a_id
+			FROM alat_or a1
+			NATURAL JOIN penyewaan s1 ON s1.a_id = a1.a_id
+			WHERE a.a_id = a1.a_id);
 		
 -- cursor belum
 -- Menampilkan nama peminjam beserta instansinya

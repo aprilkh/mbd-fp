@@ -32,29 +32,60 @@ include ("inc/navbar.php");?>
                 <h2>Index</h2>
                 <h3>Memberikan index berdasarkan nama instansi</h3>
     
-            <table class="table table-bordered"> 
-            <tr>
-                <td>Id Instansi</td>
-                <td>Nama Instansi</td>
-                <td>Alamat Instansi</td>
-                <td>No Telp. Instansi</td>
-            </tr>
+            <form class="form-inline" role="form" name="" action="" method="GET">
+              <div class="form-group">
+                <input class="form-control" name="i_id" type="text" placeholder="ID Instansi(Ex: I01)">
+                <input class="btn btn-embosed btn-primary" type="submit" value="Search">
+              </div>
+            </form><hr>
+
+            
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT * FROM instansi WHERE i_nama = 'PT. Dharmala Intiland'";
-                $qr=mysqli_query($sqlconnect,$query);
-
-                while($data = mysqli_fetch_assoc($qr)){
-                    echo '
-                    <tr>
-                        <td> '.$data['i_id'].' </td>
-                        <td> '.$data['i_nama'].' </td>
-                        <td> '.$data['i_alamat'].' </td>
-                        <td> '.$data['i_notelp'].' </td>
-                    </tr>';
+                if(!isset($_GET['i_id'])){
                 }
-            ?>
+                else{
+                    $i_id = $_GET['i_id'];
+                    $query = "SELECT * FROM instansi WHERE i_id = '$i_id'";
+                    $qr=mysqli_query($sqlconnect,$query);
+                    if($qr==false){
+                        echo ("Query cannot be executed!<br>");
+                        echo ("SQL Error : ".mysqli_error($sqlconnect));
+                    }
+                    if(mysqli_num_rows($qr)==0)
+                      {
+                      echo ("Sorry, seems that no record found by the keyword $a_id...<br>");
+                      }
+
+                    else{
+                        ?>
+                         <h5>Search result  "<?php echo $a_id; ?>"</h5><br>
+                         <table class="table table-bordered"> 
+                            <tr>
+                                <td>Id Instansi</td>
+                                <td>Nama Instansi</td>
+                                <td>Alamat Instansi</td>
+                                <td>No Telp. Instansi</td>
+                            </tr>
+                            <?php
+                                include 'inc/dbconn.php';
+                                while($data = mysqli_fetch_assoc($qr)){
+                                    echo '
+                                    <tr>
+                                        <td> '.$data['i_id'].' </td>
+                                        <td> '.$data['i_nama'].' </td>
+                                        <td> '.$data['i_alamat'].' </td>
+                                        <td> '.$data['i_notelp'].' </td>
+                                    </tr>';
+                                }
+                            ?>
+                    <?php
+                }
+                ?>
         </table>
+        <?php 
+            }
+        ?>
             <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");

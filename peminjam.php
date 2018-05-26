@@ -29,8 +29,7 @@ include ("inc/navbar.php");?>
 		<div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
 			<div class="panel-body">
 			<!-- ***********Edit your content STARTS from here******** -->
-				Tabel Peminjam<br>
-		
+			Tabel Peminjam<br>
 			<table class="table table-bordered" style="margin-top:10px;"> 
 				<tr >
 			      <td>M_ID</td>

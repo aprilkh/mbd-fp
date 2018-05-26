@@ -1,6 +1,6 @@
 <?php 
 //include the database connectivity setting
-<<<<<<< HEAD
+// <<<<<<< HEAD
 if(isset($_GET['s_id'])){
     include('inc/dbconn.php');
 

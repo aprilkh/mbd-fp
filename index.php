@@ -16,7 +16,11 @@
 <div class="area">
 <h3><i class="ion-cloud"></i> Login<b>Area</b></h3>
 <hr />
-<form method="post" action="depan.php">
+<!-- 
+<?php
+	// include ('login.php');?> -->
+
+<form method="post" action="login.php">
 <div class="form-group">
 <label for="user">Username</label>
 <input class="form-control" name="username" id="user" type="text" required/>
@@ -31,6 +35,7 @@
 <div class="clearfix"></div>
 </div>
 </form>
+
 </div>
 </div>
 </div>

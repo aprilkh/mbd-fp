@@ -1,7 +1,7 @@
 CREATE DATABASE FP;
 
 CREATE TABLE INSTANSI(
-i_id CHAR(3) NOT NULL,
+i_id CHAR(3) NOT NULL auto_increment,
 i_nama VARCHAR(100),
 i_alamat VARCHAR(100),
 i_notelp VARCHAR(12),

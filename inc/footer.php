@@ -11,7 +11,7 @@
               <ul class="bottom-menu-iconic-list">
                 <li><a href="" class="fui-facebook" target="new"></a></li>
                 <li><a href="" class="fui-twitter" target="new"></a></li>
-				        <li><a href="tel:+60129034614" class="fui-chat" target="new"></a></li>
+				        <li><a href="" class="fui-chat" target="new"></a></li>
               </ul>
             </div>
           </div>

@@ -82,6 +82,7 @@
 		            <li role="separator" class="divider"></li>
 		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
+		        <hr>
 
 				<a href="index.php" class="btn btn-info btn-block">Logout 
 					<span class="fui-export"></span></a>
