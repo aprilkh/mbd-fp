@@ -37,6 +37,7 @@ include ("inc/navbar.php");?>
 			      <td>NAMA</td>
 			      <td>MERK</td>
 			      <td>HARGASEWA</td>
+			      <td>STOK</td>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
@@ -62,6 +63,7 @@ include ("inc/navbar.php");?>
 				        echo "<td>$data[a_nama]</td>"; 
 				        echo "<td>$data[a_merk]</td>";
 				        echo "<td>$data[a_hargasewa]</td>";
+				        echo "<td>$data[a_stok]</td>";
 				        // membuat link untuk mengedit dan menghapus data
 				        echo "</tr>";
 				      }

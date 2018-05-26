@@ -32,7 +32,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="view-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="view-april.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
 				
 				<li class="dropdown">
@@ -48,7 +48,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="function-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="function-april.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
 
 		        <li class="dropdown">
@@ -56,7 +56,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="procedure-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="procedure-april.php">Aprilia Khairunnisa</a></li>
 		           </ul></li>
 
 		        <li class="dropdown">
@@ -64,7 +64,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="index-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="index-april.php">Aprilia Khairunnisa</a></li>
 		        </ul></li>
 
 		        <li class="dropdown">

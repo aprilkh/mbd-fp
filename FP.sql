@@ -1,7 +1,7 @@
 CREATE DATABASE FP;
 
 CREATE TABLE INSTANSI(
-i_id CHAR(3) NOT NULL auto_increment,
+i_id CHAR(3) NOT NULL AUTO_INCREMENT,
 i_nama VARCHAR(100),
 i_alamat VARCHAR(100),
 i_notelp VARCHAR(12),
@@ -36,6 +36,7 @@ CREATE TABLE ALAT_OR(
  a_nama VARCHAR(50),
  a_merk VARCHAR(20),
  a_hargasewa INT,
+ a_stok INT,
  PRIMARY KEY(a_id)
 );
 
@@ -106,38 +107,38 @@ INSERT INTO PEGAWAI VALUES ('G28','Subhan Maulana','Keputih Gg. 1 Blok B-1, Sura
 INSERT INTO PEGAWAI VALUES ('G29','Brama Diwangkara','Jl. Mayjen Sungkono 90, Surabaya','085390776123',STR_TO_DATE('14-02-2017','%d-%m-%Y'),'security','L');
 INSERT INTO PEGAWAI VALUES ('G30','Cynthia Dewi','Jl. Hayam Wuruk No 45, Surabaya','085140060012',STR_TO_DATE('20-04-2017','%d-%m-%Y'),'karyawan','P');
 
-INSERT INTO ALAT_OR VALUES ('A01','Bola Basket','Molten','300000');
-INSERT INTO ALAT_OR VALUES ('A02','Hockey Stick','Grays','500000');
-INSERT INTO ALAT_OR VALUES ('A03','Raket Tenis','Wilson','100000');
-INSERT INTO ALAT_OR VALUES ('A04','Ring Basket','NBA','3000000');
-INSERT INTO ALAT_OR VALUES ('A05','Sarung Tinju','Kettler','150000');
-INSERT INTO ALAT_OR VALUES ('A06','Selancar','Tribord','180000');
-INSERT INTO ALAT_OR VALUES ('A07','Skateboard','Silver Fox','185000');
-INSERT INTO ALAT_OR VALUES ('A08','Masker Anggar','Strike Wiremesh','210000');
-INSERT INTO ALAT_OR VALUES ('A09','Perahu Arung Jeram','Bestway','520000');
-INSERT INTO ALAT_OR VALUES ('A10','Bola Voli','Mikasa','50000');
+INSERT INTO ALAT_OR VALUES ('A01','Bola Basket','Molten','300000','30');
+INSERT INTO ALAT_OR VALUES ('A02','Hockey Stick','Grays','500000','35');
+INSERT INTO ALAT_OR VALUES ('A03','Raket Tenis','Wilson','100000','45');
+INSERT INTO ALAT_OR VALUES ('A04','Ring Basket','NBA','3000000','33');
+INSERT INTO ALAT_OR VALUES ('A05','Sarung Tinju','Kettler','150000','29');
+INSERT INTO ALAT_OR VALUES ('A06','Selancar','Tribord','180000','33');
+INSERT INTO ALAT_OR VALUES ('A07','Skateboard','Silver Fox','185000','44');
+INSERT INTO ALAT_OR VALUES ('A08','Masker Anggar','Strike Wiremesh','210000','20');
+INSERT INTO ALAT_OR VALUES ('A09','Perahu Arung Jeram','Bestway','520000','25');
+INSERT INTO ALAT_OR VALUES ('A10','Bola Voli','Mikasa','50000','44');
 
-INSERT INTO ALAT_OR VALUES ('A11','Bola Basket','Spalding','350000');
-INSERT INTO ALAT_OR VALUES ('A12','Bola Kaki','Adidas','45000');
-INSERT INTO ALAT_OR VALUES ('A13','Bola Voli','Molten','100000');
-INSERT INTO ALAT_OR VALUES ('A14','Bola Kasti','Tiger','7000');
-INSERT INTO ALAT_OR VALUES ('A15','Raket Badminton','Yonex','50000');
-INSERT INTO ALAT_OR VALUES ('A16','Barbel','Neoprene','40000');
-INSERT INTO ALAT_OR VALUES ('A17','Matras','Glory','20000');
-INSERT INTO ALAT_OR VALUES ('A18','Bola Golf','Titleist Pro','70000');
-INSERT INTO ALAT_OR VALUES ('A19','Tenis Meja','Butterfly','2000000');
-INSERT INTO ALAT_OR VALUES ('A20','Bola Golf','Srixon','45000');
+INSERT INTO ALAT_OR VALUES ('A11','Bola Basket','Spalding','350000','50');
+INSERT INTO ALAT_OR VALUES ('A12','Bola Kaki','Adidas','45000','55');
+INSERT INTO ALAT_OR VALUES ('A13','Bola Voli','Molten','100000','56');
+INSERT INTO ALAT_OR VALUES ('A14','Bola Kasti','Tiger','7000','60');
+INSERT INTO ALAT_OR VALUES ('A15','Raket Badminton','Yonex','50000','44');
+INSERT INTO ALAT_OR VALUES ('A16','Barbel','Neoprene','40000','55');
+INSERT INTO ALAT_OR VALUES ('A17','Matras','Glory','20000','67');
+INSERT INTO ALAT_OR VALUES ('A18','Bola Golf','Titleist Pro','70000','44');
+INSERT INTO ALAT_OR VALUES ('A19','Tenis Meja','Butterfly','2000000','55');
+INSERT INTO ALAT_OR VALUES ('A20','Bola Golf','Srixon','45000','66');
 
-INSERT INTO ALAT_OR VALUES ('A21','Sarung Tinju','Everlast','150000');
-INSERT INTO ALAT_OR VALUES ('A22','Bow Panahan','R50','155000');
-INSERT INTO ALAT_OR VALUES ('A23','Tolak Peluru','ROX','65000');
-INSERT INTO ALAT_OR VALUES ('A24','Bola Sepak Takraw','Bola Mas','60000');
-INSERT INTO ALAT_OR VALUES ('A25','Selancar','Vixion','50000');
-INSERT INTO ALAT_OR VALUES ('A26','Bantalan Target Panahan','Vision','20000');
-INSERT INTO ALAT_OR VALUES ('A27','Skateboard','Penny Board','170000');
-INSERT INTO ALAT_OR VALUES ('A28','Bat Tenis Meja','Donic','55000');
-INSERT INTO ALAT_OR VALUES ('A29','Anak Panahan','Quiver','35000');
-INSERT INTO ALAT_OR VALUES ('A30','Bat Tenis Meja','Butterfly','20000');
+INSERT INTO ALAT_OR VALUES ('A21','Sarung Tinju','Everlast','150000','65');
+INSERT INTO ALAT_OR VALUES ('A22','Bow Panahan','R50','155000','63');
+INSERT INTO ALAT_OR VALUES ('A23','Tolak Peluru','ROX','65000','46');
+INSERT INTO ALAT_OR VALUES ('A24','Bola Sepak Takraw','Bola Mas','60000','46');
+INSERT INTO ALAT_OR VALUES ('A25','Selancar','Vixion','50000','55');
+INSERT INTO ALAT_OR VALUES ('A26','Bantalan Target Panahan','Vision','20000','50');
+INSERT INTO ALAT_OR VALUES ('A27','Skateboard','Penny Board','170000','55');
+INSERT INTO ALAT_OR VALUES ('A28','Bat Tenis Meja','Donic','55000','67');
+INSERT INTO ALAT_OR VALUES ('A29','Anak Panahan','Quiver','35000','44');
+INSERT INTO ALAT_OR VALUES ('A30','Bat Tenis Meja','Butterfly','20000','53');
 
 INSERT INTO peminjam VALUES ('M01','I01','Hari Sudirman','Jl. Pondok Maritim II no 5','081324353627','harisud@gmail.com','l');
 INSERT INTO peminjam VALUES ('M02','I02','Bondan Prakoso','Jl. Keputih Perintis no 23','081324353627','bondan@gmail.com','l');

@@ -46,14 +46,12 @@ include ("inc/navbar.php");?>
 
 // =======
 				      include 'inc/dbconn.php';
-// // <<<<<<< Updated upstream
 // 				      $query = "SELECT * FROM pegawai ORDER BY g_id ASC";
 // 				      $qr=mysqli_query($db,$query);
 // =======
 				      $query = "SELECT * FROM pegawai ORDER BY G_ID ASC";
 				      $qr=mysqli_query($sqlconnect,$query);
-// >>>>>>> Stashed changes
-// >>>>>>> master
+
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
 						echo ("Query cannot be executed!<br>");
