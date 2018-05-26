@@ -72,7 +72,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="join-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="join-april.php">Aprilia Khairunnisa</a></li>
 		           </ul></li>
 
 		        <li class="dropdown">
