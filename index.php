@@ -1,41 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Employee Account</title>
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
-<link href="/content/css/account.css?7" rel="stylesheet" type="text/css">
+  <title>Penyewaan Alat Olahraga</title>
+  <h3 align="center">Penyewaan Alat Olahraga</h3>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Loading Flat UI Pro -->
+    <link href="css/flat-ui-pro.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
+  
 </head>
-<body><div class="container push-top">
-<div class="row">
-<div class="col-md-4 col-md-offset-4 push-top">
-<div class="area">
-<h3><i class="ion-cloud"></i> Login<b>Area</b></h3>
-<hr />
+<body>
+< <?php
+include ('inc/dbconn.php');
+session_start();
+// If form submitted, insert values into the database.
+if (isset($_POST['g_nama'])){
+        // removes backslashes
+	$g_nama = stripslashes($_REQUEST['g_nama']);
+        //escapes special characters in a string
+	$g_nama = mysqli_real_escape_string($sqlconnect,$g_nama);
+	$g_id = stripslashes($_REQUEST['g_id']);
+	$g_id = mysqli_real_escape_string($sqlconnect,$g_id);
+	//Checking is user existing in the database or not
+    $query = "SELECT * FROM pegawai WHERE g_nama='$g_nama' and g_id='$g_id'";
+	$result = mysqli_query($sqlconnect,$query) or die(mysqli_error($sqlconnect));
+	$rows = mysqli_num_rows($result);
 
-<form method="post" action="login.php">
-<div class="form-group">
-<label for="user">Username</label>
-<input class="form-control" name="user" id="user" type="text" required/>
-</div>
-<div class="form-group">
-<label for="pass">Password </label>
-<input class="form-control" name="pass" id="pass" type="Password"required />
-</div>
-<hr>
-<div class="form-group">
-<input class="pull-left btn btn-default" type="submit" value="Login" />
-<div class="clearfix"></div>
-</div>
+	if($_POST["remember_me"]=='1' || $_POST["remember_me"]=='on')
+	     {
+	        $hour = time() + 3600 * 24 * 30;
+	        setcookie('g_nama', $login, $hour);
+	       	setcookie('g_id', $g_id, $hour);
+	     }
+
+        if($rows==1){
+	    $_SESSION['g_nama'] = $g_nama;
+            // Redirect user to index.php
+	    header("Location: depan.php");
+         }else{
+	echo "<div class='form'>
+<h3>Username/password is incorrect.</h3>
+<br/>Click here to <a href='login.php'>Login</a></div>";
+	}
+    }else{
+?> >
+
+<div class="form" align="center">
+	
+<h4>Log In</h1><br><br><br><br></h4>
+
+<form action="" method="post" name="login">
+<input class="form-control " type="text" align="center" name="g_nama" placeholder="Username" required /><br>
+<input class="form-control" type="text" align="center" name="g_id" placeholder="Password" required /><br><br>
+<!--  <p class="remember_me">
+      <label>
+        <input type="checkbox" name="remember_me" id="remember_me">
+        Remember me 
+      </label>
+    </p> -->
+<input name="submit" type="submit" value="Login" />
 </form>
 
 </div>
-</div>
-</div>
-</div>
+<?php } ?>
+<script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+                </script>
+                <?php 
+//include the footer
+include ("inc/footer.php");?>
 </body>
 </html>
