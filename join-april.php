@@ -39,7 +39,7 @@ include ("inc/navbar.php");?>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT MAX (d_totaldenda) FROM denda WHERE MONTH(Date) = 05";
+                $query = "SELECT MAX (d_totaldenda) FROM denda";
                 $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_array($qr)){

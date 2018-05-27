@@ -86,5 +86,5 @@ END$$
 DELIMITER$$
  
  UPDATE alat_or
- SET a_stok= '49'
+ SET a_stok= '50'
  WHERE a_id = 'A11';

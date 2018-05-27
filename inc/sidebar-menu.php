@@ -84,7 +84,7 @@
 		        </ul></li>
 		        <hr>
 
-				<a href="index.php" class="btn btn-info btn-block">Logout 
+				<a href="login.php" class="btn btn-danger btn-block">Logout 
 					<span class="fui-export"></span></a>
 
 			</div>

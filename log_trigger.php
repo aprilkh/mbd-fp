@@ -30,13 +30,13 @@ include ("inc/navbar.php");?>
                 <h2>Trigger</h2>
                 <h3>Mencatat setiap ada update jumlah stok pada tabel alat OR</h3>
     
-            <form class="form-inline" role="form" name="" action="" method="GET">
+            <!-- <form class="form-inline" role="form" name="" action="" method="GET">
               <div class="form-group">
                 <input class="form-control" name="a_id" type="text" placeholder="ID ALat OR(Ex: A01)">
                 <input class="btn btn-embosed btn-primary" type="submit" value="Search">
               </div>
-            </form><br>
-<form name="update" method="post" action="trigger-april.php">
+            </form><br> -->
+<form name="update" method="post" action="">
 		<table border="0">
 			<!-- <tr> 
 				<td>Nama</td>
@@ -51,9 +51,7 @@ include ("inc/navbar.php");?>
 				<td><input type="text" name="harga sewa" value=<?php echo $a_hargasewa;?>></td>
 			</tr>
 			<tr>  -->
-				<td>Stok</td>
-				<td><input type="text" name="stok" value=<?php echo $a_stok;?>></td>
-			</tr>
+				<input class="form-control" name="a_stok" type="text" placeholder="jumlah stok baru">
 			<!-- <tr> 
 				<td>Tanggal Perubahan</td>
 				<td><input type="text" name="stok" value=<?php echo $tanggal_perubahan;?>></td>
@@ -64,9 +62,9 @@ include ("inc/navbar.php");?>
 			</tr>
 			<tr> -->
 				<td><input type="hidden" name="a_id" value=<?php echo $_GET['a_id'];?>></td>
-				<td><input type="submit" name="update" value="Update"></td>
 			</tr>
-		</table>
+		</table><br>
+      <a href="trigger_april.php"> <button class="btn btn-danger btn-block login" type="submit">UPDATE STOK</button></a>
 	</form>
 <?php
 // include database connection file
