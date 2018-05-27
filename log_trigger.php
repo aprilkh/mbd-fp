@@ -10,12 +10,10 @@ include ("inc/dbconn.php");?>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Loading Flat UI Pro -->
     <link href="css/flat-ui-pro.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png">
-  
+    <link rel="shortcut icon" href="img/favicon.png"> 
 </head>
 <body>
-	
-<?php 
+	<?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
 <div class="container">
@@ -32,14 +30,84 @@ include ("inc/navbar.php");?>
                 <h2>Trigger</h2>
                 <h3>Mencatat setiap ada update jumlah stok pada tabel alat OR</h3>
     
-            <form class="form-inline" role="form" name="" action="" method="GET">
+            <!-- <form class="form-inline" role="form" name="" action="" method="GET">
               <div class="form-group">
                 <input class="form-control" name="a_id" type="text" placeholder="ID ALat OR(Ex: A01)">
                 <input class="btn btn-embosed btn-primary" type="submit" value="Search">
               </div>
-            </form><br>
-            
-    <?php
+            </form><br> -->
+<form name="update" method="post" action="">
+		<table border="0">
+			<!-- <tr> 
+				<td>Nama</td>
+				<td><input type="text" name="name" value=<?php echo $a_nama;?>></td>
+			</tr>
+			<tr> 
+				<td>Merk</td>
+				<td><input type="text" name="merk" value=<?php echo $a_merk;?>></td>
+			</tr>
+			<tr> 
+				<td>Harga Sewa</td>
+				<td><input type="text" name="harga sewa" value=<?php echo $a_hargasewa;?>></td>
+			</tr>
+			<tr>  -->
+				<input class="form-control" name="a_stok" type="text" placeholder="jumlah stok baru">
+			<!-- <tr> 
+				<td>Tanggal Perubahan</td>
+				<td><input type="text" name="stok" value=<?php echo $tanggal_perubahan;?>></td>
+			</tr>
+			<tr> 
+				<td>Status</td>
+				<td><input type="text" name="stok" value=<?php echo $status;?>></td>
+			</tr>
+			<tr> -->
+				<td><input type="hidden" name="a_id" value=<?php echo $_GET['a_id'];?>></td>
+			</tr>
+		</table><br>
+      <a href="trigger_april.php"> <button class="btn btn-danger btn-block login" type="submit">UPDATE STOK</button></a>
+	</form>
+<?php
+// include database connection file
+include_once("inc/dbconn.php");
+ 
+// Check if form is submitted for user update, then redirect to homepage after update
+if(isset($_POST['update']))
+{	
+	// $a_id = $_POST['a_id'];
+ //    $a_nama = $_POST['a_nama'];
+ //    $a_merk = $_POST['a_merk'];
+ //    $a_hargasewa = $_POST['a_hargasewa'];
+    $a_stok = $_POST['a_stok'];
+    $tanggal_perubahan = $_POST['tanggal_perubahan'];
+    $status = $_POST['status'];
+		
+	// update user data
+	$qr = mysqli_query($sqlconnect, "UPDATE trigger_april SET a_nama='$a_nama',a_merk='$a_merk',a_hargasewa='$a_hargasewa',a_stok='$a_stok',tanggal_perubahan='$tanggal_perubahan',status='$status' WHERE a_id=$a_id");
+	
+	// Redirect to homepage to display updated user in list
+	header("Location: trigger-april.php");
+}
+?>
+<?php
+// Display selected user data based on id
+// Getting id from url
+$a_id = $_POST['a_id'];
+ 
+// Fetech user data based on id
+$qr = mysqli_query($sqlconnect, "SELECT * FROM trigger_april");
+
+while($data = mysqli_fetch_array($qr))
+{
+	$a_id = $data['a_id'];
+	$a_nama = $data['a_nama'];
+	$a_merk = $data['a_merk'];
+	$a_hargasewa = $data['a_hargasewa'];
+	$a_stok = $data['a_stok'];
+	$tanggal_perubahan = $data['tanggal_perubahan'];
+	$status = $data['status'];
+}
+?>
+   <!-- <?php
     include 'inc/dbconn.php';
     if(!isset($_GET['a_id'])){
           
@@ -54,7 +122,7 @@ include ("inc/navbar.php");?>
           // $tanggal_perubahan = $_GET['tanggal_perubahan'];
           // $status = $_GET['status'];
 
-          $query = "SELECT * FROM alat_or WHERE a_id = '$a_id'";
+          $query = "SELECT * FROM trigger_april WHERE a_id = '$a_id'";
           //Execute the query
           $qr=mysqli_query($sqlconnect,$query);
           if($qr==false){
@@ -77,6 +145,8 @@ include ("inc/navbar.php");?>
 			    <td>MERK</td>
 			    <td>HARGASEWA</td>
 		        <td>STOK</td>
+		        <td>tgl_perubahan</td>
+       			<td>status</td>
  	        </tr>
 
             <?php
@@ -90,7 +160,8 @@ include ("inc/navbar.php");?>
                         <td> '.$data['a_merk'].' </td>
                         <td> '.$data['a_hargasewa'].' </td>
                         <td> '.$data['a_stok'].' </td>
-                      
+                        <td> '.$data['tanggal_perubahan'].' </td>
+                        <td> '.$data['status'].' </td>
                     </tr>';
                 }
             ?>
@@ -98,13 +169,11 @@ include ("inc/navbar.php");?>
           }//end of records
         ?>
         </table>
-        <a href="log_trigger.php"> <button class="btn btn-danger btn-block login" type="submit">UPDATE STOK</button></a>
         <?php
         }//end if there are records
       //end db search
-      ?>
-	
-            <script>
+      ?> -->
+<script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
                 }
@@ -135,11 +204,8 @@ include ("inc/navbar.php");?>
     </div><!-- end main menu -->
   </div>
 </div><!-- end container -->
-
-
 <?php 
 //include the footer
 include ("inc/footer.php");?>
-
 </body>
 </html>

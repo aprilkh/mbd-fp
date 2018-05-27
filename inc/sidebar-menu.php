@@ -72,7 +72,7 @@
 		          <ul class="dropdown-menu">
 		        	<li><a href="join-rizvi.php">Rizvi Sofbrina</a></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="view2.php">Aprilia Khairunnisa</a></li>
+		            <li><a href="join-april.php">Aprilia Khairunnisa</a></li>
 		           </ul></li>
 
 		        <li class="dropdown">
@@ -84,7 +84,7 @@
 		        </ul></li>
 		        <hr>
 
-				<a href="index.php" class="btn btn-info btn-block">Logout 
+				<a href="login.php" class="btn btn-danger btn-block">Logout 
 					<span class="fui-export"></span></a>
 
 			</div>

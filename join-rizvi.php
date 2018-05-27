@@ -35,21 +35,25 @@ include ("inc/navbar.php");?>
 
             <table class="table table-bordered"> 
             <tr>
+                <td>ID Alat</td>
                 <td>Nama Alat</td>
-                <td>Jumlah Rusak</td>
-                <td>Total Denda</td>
+                <td>Merk</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT * FROM view_rizvi";
+                $query = "SELECT a.a_id, a.a_nama, a.a_merk
+                        FROM alat_or a
+                        LEFT JOIN penyewaan s ON s.a_id = a.a_id
+                        WHERE s.s_id IS NULL
+                        ORDER BY s.s_id ";
                 $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_array($qr)){
                     echo '
                     <tr>
+                        <td> '.$data['a_id'].' </td>
                         <td> '.$data['a_nama'].' </td>
-                        <td> '.$data['d_jumlahrusak'].' </td>
-                        <td> '.$data['d_totalharga'].' </td>
+                        <td> '.$data['a_merk'].' </td>
                     </tr>';
                 }
             ?>

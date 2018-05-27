@@ -35,7 +35,7 @@ include ("inc/navbar.php");?>
         <!-- Edit -->
         <form class="form-inline" role="form" name="" action="" method="GET">
           <div class="form-group">
-            <input class="form-control" name="i_id" type="text" placeholder="ID Instansi(Ex: I01)">
+            <input class="form-control" name="i_id" type="text" placeholder="ID Instansi(Ex: 101)">
             <input class="btn btn-embosed btn-primary" type="submit" value="Search">
           </div>
         </form><hr>
@@ -69,8 +69,11 @@ include ("inc/navbar.php");?>
 
             <table class="table table-bordered"> 
             <tr>
+                <td>Nama Instansi</td>
                 <td>Nama Alat</td>
                 <td>Nama Merk</td>
+                <td>Jumlah Sewa</td>
+                <td>Total Transaksi</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
@@ -78,8 +81,11 @@ include ("inc/navbar.php");?>
                 while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
+                        <td> '.$data['i_nama'].' </td>
                         <td> '.$data['a_nama'].' </td>
                         <td> '.$data['a_merk'].' </td>
+                        <td> '.$data['s_jumlahsewa'].' </td>
+                        <td> '.$data['t_totalharga'].' </td>
                     </tr>';
                 }
             ?>

@@ -43,8 +43,9 @@ CREATE OR REPLACE INDEX index_alat ON alat_or(a_id);
 
 -- join
 -- Mencari denda terbanyak pada bulan tertentu.
-SELECT d.d_totaldenda
-FROM denda d JOIN transaksi t ON d.t_id = t.t_id JOIN penyewaan s ON s.t_id = t.t_id
+SELECT MAX(d.d_totaldenda)
+FROM denda d JOIN penyewaan s ON d.t_id = s.t_id
+WHERE EXTRACT(MONTH FROM s.s_tglsewa) = 04; 
 
 -- cursor
 -- Menampilkan nama pegawai dan transaksi yang dilakukan
@@ -61,6 +62,7 @@ CALL cursorpeg ('G01');
 
 -- trigger
 -- Mencatat setiap ada update jumlah stok pada tabel alat OR 
+-- BELOM
 CREATE TABLE trigger_april(
  a_id CHAR(3),
  a_nama VARCHAR(50),
@@ -76,7 +78,7 @@ ALTER TABLE trigger_april ADD(
 
 DELIMITER$$
 CREATE TRIGGER tr_april AFTER UPDATE ON alat_or
-FOR EACH ROW
+FOR EACH ROW	
 BEGIN
    INSERT INTO trigger_april VALUES (old.a_id, old.a_nama, old.a_merk, old.a_hargasewa, old.a_stok, SYSDATE(), 'UPDATE');
    INSERT INTO trigger_april VALUES (new.a_id, new.a_nama, new.a_merk, new.a_hargasewa, new.a_stok, SYSDATE(), 'UPDATE');
@@ -84,5 +86,5 @@ END$$
 DELIMITER$$
  
  UPDATE alat_or
- SET a_stok= '49'
+ SET a_stok= '50'
  WHERE a_id = 'A11';

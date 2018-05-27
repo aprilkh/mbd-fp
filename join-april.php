@@ -30,25 +30,21 @@ include ("inc/navbar.php");?>
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
             <!-- ***********Edit your content STARTS from here******** -->
-                <h2>View</h2>
-                <h3>Menampilkan alat yang paling banyak rusak</h3>
+                <h2>Join</h2>
+                <h3>Mencari denda terbanyak pada bulan tertentu.</h3>
             
             <table class="table table-bordered"> 
             <tr>
-                <td>Nama Alat</td>
-                <td>Jumlah Rusak</td>
-                <td>Total Denda</td>
+                <td>Denda Terbanyak</td>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT * FROM view_rizvi";
+                $query = "SELECT MAX (d_totaldenda) FROM denda";
                 $qr=mysqli_query($sqlconnect,$query);
 
                 while($data = mysqli_fetch_array($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['a_nama'].' </td>
-                        <td> '.$data['d_jumlahrusak'].' </td>
                         <td> '.$data['d_totaldenda'].' </td>
                     </tr>';
                 }

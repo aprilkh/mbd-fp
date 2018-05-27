@@ -34,7 +34,7 @@ include ("inc/navbar.php");?>
     
             <form class="form-inline" role="form" name="" action="" method="GET">
               <div class="form-group">
-                <input class="form-control" name="i_id" type="text" placeholder="ID Instansi(Ex: I01)">
+                <input class="form-control" name="i_nama" type="text" placeholder="Nama Instansi">
                 <input class="btn btn-embosed btn-primary" type="submit" value="Search">
               </div>
             </form><hr>
@@ -42,11 +42,11 @@ include ("inc/navbar.php");?>
             
             <?php
                 include 'inc/dbconn.php';
-                if(!isset($_GET['i_id'])){
+                if(!isset($_GET['i_nama'])){
                 }
                 else{
-                    $i_id = $_GET['i_id'];
-                    $query = "SELECT * FROM instansi WHERE i_id = '$i_id'";
+                    $i_nama = $_GET['i_nama'];
+                    $query = "SELECT * FROM instansi WHERE i_nama = '$i_nama'";
                     $qr=mysqli_query($sqlconnect,$query);
                     if($qr==false){
                         echo ("Query cannot be executed!<br>");
@@ -59,7 +59,7 @@ include ("inc/navbar.php");?>
 
                     else{
                         ?>
-                         <h5>Search result  "<?php echo $a_id; ?>"</h5><br>
+                         <h5>Search result  "<?php echo $i_nama; ?>"</h5><br>
                          <table class="table table-bordered"> 
                             <tr>
                                 <td>Id Instansi</td>

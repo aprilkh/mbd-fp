@@ -34,7 +34,7 @@ include ("inc/navbar.php");?>
                 <!-- Edit -->
         <form class="form-inline" role="form" name="" action="" method="GET">
           <div class="form-group">
-            <input class="form-control" name="a_id" type="text" placeholder="ID Alat(Ex: A01)">
+            <input class="form-control" name="a_nama" type="text" placeholder="Nama Alat">
             <input class="btn btn-embosed btn-primary" type="submit" value="Search">
           </div>
         </form><hr>
@@ -42,12 +42,12 @@ include ("inc/navbar.php");?>
         <?php
         include 'inc/dbconn.php';
         //check staff name input by the user if null
-        if(!isset($_GET['a_id'])){
+        if(!isset($_GET['a_nama'])){
           //exit();
         }else{//if there's user search - then perform db search
         //Create SQL query
-          $a_id = $_GET['a_id'];
-          $query = "SELECT DISTINCT jmltotal('$a_id') AS Total_Alat FROM alat_or";
+          $a_nama = $_GET['a_nama'];
+          $query = "SELECT DISTINCT jmltotal('$a_nama') AS Total_Alat FROM alat_or";
           //Execute the query
           $qr=mysqli_query($sqlconnect,$query);
           if($qr==false){
@@ -61,7 +61,7 @@ include ("inc/navbar.php");?>
           else
           {//there is/are record(s)
           ?>
-            <h5>Search result for the "<?php echo $a_id; ?>"</h5><br>
+            <h5>Search result for the "<?php echo $a_nama; ?>"</h5><br>
 
             <table class="table table-bordered"> 
             <tr>
