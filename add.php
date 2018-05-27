@@ -29,7 +29,7 @@ include ("inc/navbar.php");?>
     <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
       <div class="panel-body">
  
- <form action="add.php" method="post" name="form1">
+ <form action="trigger-rizvi.php" method="post" name="form1">
   <table width="80%" border="0">
    <tr> 
     <td>Nama Instansi</td>
@@ -58,15 +58,20 @@ include ("inc/navbar.php");?>
   $i_notelp = $_POST['i_notelp'];
   
   // include database connection file
-  include_once("inc/dbconn.php");
+  include("inc/dbconn.php");
     
   // Insert user data into table
   $qr = mysqli_query($sqlconnect, "INSERT INTO instansi(i_nama,i_alamat,i_notelp) VALUES('$i_nama','$i_alamat','$i_notelp')");
-  
+  if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($db));
+  }else{//insert successfull
+            echo "Added Successfull<br>";
+            echo "<a href='trigger-rizvi-hasil.php'>View Instansi</a>";
+          }
   // Show message when user added
-  echo "User added successfully. <a href='instansi.php'>View Users</a>";
  }
- 
+
  ?>
       </div> <!--body panel main -->
     </div><!--toc -->
