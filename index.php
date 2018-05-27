@@ -53,7 +53,7 @@ if (isset($_POST['g_nama'])){
 
 <form action="" method="post" name="login">
 <input class="form-control " type="text" align="center" name="g_nama" placeholder="Username" required /><br>
-<input class="form-control" type="text" align="center" name="g_id" placeholder="Password" required /><br><br>
+<input class="form-control" type="password" align="center" name="g_id" placeholder="Password" required /><br><br>
 <!--  <p class="remember_me">
       <label>
         <input type="checkbox" name="remember_me" id="remember_me">

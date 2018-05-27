@@ -39,8 +39,8 @@ include ("inc/navbar.php");?>
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT MAX (d_totaldenda) FROM denda";
-                $qr=mysqli_query($sqlconnect,$query);
+                $query = "SELECT d_totaldenda FROM denda ASC";
+                $qr=mysqli_query($sqlconnect,$query) or die(mysqli_error($sqlconnect));
 
                 while($data = mysqli_fetch_array($qr)){
                     echo '
