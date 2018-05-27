@@ -39,13 +39,11 @@ include ("inc/navbar.php");?>
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-// <<<<<<< HEAD
-				    
-// // =======
+
 // 				      $query = "SELECT * FROM instansi ORDER BY I_ID ASC";
 				      $query = "SELECT * from instansi";
 				      $qr=mysqli_query($sqlconnect,$query);
-// >>>>>>> master
+
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
 						echo ("Query cannot be executed!<br>");

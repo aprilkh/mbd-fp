@@ -40,39 +40,41 @@ INSERT INTO instansi VALUES ('I31','PT. Kenangan Indah','Jl. kenangan menuju, ba
 -- Menampilkan total dari alat olahraga tertentu yang dipinjam
 
 DELIMITER $$
-CREATE OR REPLACE FUNCTION jmltotal(id CHAR(3))
+CREATE OR REPLACE FUNCTION jmltotal(nama VARCHAR(50))
     RETURNS INT
     DETERMINISTIC
     BEGIN
 	DECLARE total INT;
 	SELECT SUM(s.s_jumlahsewa) INTO total
 	FROM alat_or a JOIN penyewaan s ON a.a_id = s.a_id
-	WHERE id=a.a_id;
+	WHERE a.a_nama = nama;
 	RETURN total;
     END$$
 DELIMITER $$
 
-SELECT DISTINCT jmltotal('A03') AS Total_Alat FROM alat_or
+SELECT DISTINCT jmltotal('Bola Basket') AS Total_Alat FROM alat_or
 
 -- Procedure
 -- Menampilkan nama alat yang dipinjam pada instansi tertentu
 
 DELIMITER$$
-CREATE OR REPLACE PROCEDURE ins(id CHAR(3))
+CREATE OR REPLACE PROCEDURE ins(id INT)
 BEGIN
- SELECT DISTINCT a_nama, a_merk
- FROM alat_or a JOIN penyewaan s ON a.a_id = s.a_id
+ SELECT DISTINCT i_nama, a_nama, a_merk, s_jumlahsewa, t_totalharga
+ FROM alat_or a 
+ JOIN penyewaan s ON a.a_id = s.a_id
+ JOIN transaksi t ON s.t_id = t.t_id
  JOIN peminjam m ON s.m_id = m.m_id
  JOIN instansi i ON m.i_id = i.i_id
  WHERE id = i.i_id;
 END$$
 
-CALL ins('I22')
+CALL ins('122')
 
 -- index
 -- Memberikan index berdasarkan nama instansi
 
-CREATE OR REPLACE INDEX index_instansi ON instansi(i_id);
+CREATE OR REPLACE INDEX index_instansi ON instansi(i_nama);
 SELECT *
 FROM instansi
 WHERE i_nama = 'PT. Dharmala Intiland';
@@ -88,26 +90,13 @@ ORDER BY s.s_id
 		
 -- cursor belum
 -- Menampilkan nama peminjam beserta instansinya
-
-DELIMITER$$
-CREATE OR REPLACE PROCEDURE eksplisit()
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE cursor_rizvi(id INT)
 BEGIN
- DECLARE id CHAR(10);
- DECLARE kelar INT DEFAULT 0;
- DECLARE excursor CURSOR FOR SELECT id_transaksi FROM transaksi;
- DECLARE CONTINUE HANDLER FOR NOT FOUND SET kelar=1;
- 
- OPEN excursor;
-REPEAT 
- FETCH excursor INTO id;
- UPDATE transaksi
- SET total_pembayaran = harga_pertiket * jumlah_tiket * 0.9
- WHERE id_transaksi=id AND jumlah_tiket > 10;
- UNTIL kelar END REPEAT;
- CLOSE excursor;
-END$$
-DELIMITER$$
+SELECT DISTINCT i.i_id, i.i_nama, m.m_id, m.m_nama
+FROM instansi i JOIN peminjam m ON(i.i_id = m.i_id)
+WHERE id=i.i_id;
+END $$
+DELIMITER $$
 
-CALL eksplisit();
-
-SELECT * FROM transaksi WHERE jumlah_tiket > 10;
+CALL cursor_rizvi ('122');

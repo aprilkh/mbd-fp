@@ -49,7 +49,7 @@ include ("inc/navbar.php");?>
                     <tr>
                         <td> '.$data['a_nama'].' </td>
                         <td> '.$data['d_jumlahrusak'].' </td>
-                        <td> '.$data['d_totalharga'].' </td>
+                        <td> '.$data['d_totaldenda'].' </td>
                     </tr>';
                 }
             ?>

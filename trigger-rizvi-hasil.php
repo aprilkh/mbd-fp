@@ -29,28 +29,24 @@ include ("inc/navbar.php");?>
 		<div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
 			<div class="panel-body">
 			<!-- ***********Edit your content STARTS from here******** -->
-				Tabel Penyewaan<br>
-		
+				Tabel Instansi<br>
 			<table class="table table-bordered" style="margin-top:10px;"> 
 				<tr >
-			      <td>S_ID</td>
-			      <td>A_ID</td>
-			      <td>M_ID</td>
-			      <td>T_ID</td>
-			      <td>TGL SEWA</td>
-			      <td>TGL KEMBALI</td>
-			      <td>JUMLAH</td>
-			      <td>STATUS</td>
+			      <td>I_ID</td>
+			      <td>NAMA</td>
+			      <td>ALAMAT</td>
+			      <td>NOTELP</td>
+			      <td>Tanggal Perubahan</td>
+			   	  <td>Status</td>
+			      
 			    </tr>
 				 <?php
 				      include 'inc/dbconn.php';
-// <<<<<<< HEAD
 
-
-// =======
-				      $query = "SELECT * FROM penyewaan ORDER BY S_ID ASC";
+// 				      $query = "SELECT * FROM instansi ORDER BY I_ID ASC";
+				      $query = "SELECT * from log_instansi";
 				      $qr=mysqli_query($sqlconnect,$query);
-// >>>>>>> master
+
 				      //mengecek apakah ada error ketika menjalankan query
 				      if($qr==false){
 						echo ("Query cannot be executed!<br>");
@@ -64,16 +60,18 @@ include ("inc/navbar.php");?>
 				      {
 				        // mencetak / menampilkan data
 				        echo "<tr>";
-				        echo "<td>$data[s_id]</td>"; //menampilkan data id
-				        echo "<td>$data[a_id]</td>"; 
-				        echo "<td>$data[m_id]</td>";
-				        echo "<td>$data[t_id]</td>"; 
-				        echo "<td>$data[s_tglsewa]</td>"; 
-				        echo "<td>$data[s_tglkembali]</td>";
-				        echo "<td>$data[s_jumlahsewa]</td>";
-				        echo "<td>$data[s_statuskembali]</td>"; 
+				        echo "<td>$data[i_id]</td>"; //menampilkan data id
+				        echo "<td>$data[i_nama]</td>"; 
+				        echo "<td>$data[i_alamat]</td>";
+				        echo "<td>$data[i_notelp]</td>";
+				        echo "<td>$data[tgl_perubahan]</td>";
+				        echo "<td>$data[status]</td>";
 				        // membuat link untuk mengedit dan menghapus data
+				       
+
+				        echo "</tr>";
 				      }
+				        echo "<a href='instansi.php'>View All Instansi Table</a>";
 				      ?>
 				    </table>
 

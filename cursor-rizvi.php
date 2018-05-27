@@ -18,44 +18,83 @@ include ("inc/dbconn.php");?>
 <?php 
 //include the navigation bar
 include ("inc/navbar.php");?>
-
 <div class="container">
     <br>
     <br>
   <div class="row">
     
-    <!-- tampilan view -->
+   <!--  tampilan function -->
     <div class="col-md-9" name="maincontent" id="maincontent">
         <div id="exercise" name="exercise" class="panel panel-info">
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
-            <!-- ***********Edit your content STARTS from here******** -->
                 <h2>Cursor</h2>
                 <h3>Menampilkan nama peminjam beserta instansinya</h3>
+            
+                <!-- Edit -->
+        <form class="form-inline" role="form" name="" action="" method="GET">
+          <div class="form-group">
+            <input class="form-control" name="i_id" type="text" placeholder="Id Instansi (Ex: 101)">
+            <input class="btn btn-embosed btn-primary" type="submit" value="Search">
+          </div>
+        </form><hr>
+
+        <?php
+        include 'inc/dbconn.php';
+        //check staff name input by the user if null
+        if(!isset($_GET['i_id'])){
+          //exit();
+        }else{//if there's user search - then perform db search
+        //Create SQL query
+          $i_id = $_GET['i_id'];
+          $query = "CALL cursor_rizvi('$i_id')";
+          //Execute the query
+          $qr=mysqli_query($sqlconnect,$query);
+          if($qr==false){
+            echo ("Query cannot be executed!<br>");
+            echo ("SQL Error : ".mysqli_error($sqlconnect));
+          }
+          if(mysqli_num_rows($qr)==0)
+          {
+          echo ("Sorry, seems that no record found by the keyword $a_id...<br>");
+          }
+          else
+          {//there is/are record(s)
+          ?>
+            <h5>Search result for the "<?php echo $i_id; ?>"</h5><br>
 
             <table class="table table-bordered"> 
             <tr>
-                <td>Nama Alat</td>
-                <td>Jumlah Rusak</td>
-                <td>Total Denda</td>
+                <td>ID Instansi</td>
+                <td>Nama Instansi</td>
+                <td>ID Peminjam</td>
+                <td>Nama Peminjam</td>
+
             </tr>
             <?php
                 include 'inc/dbconn.php';
-                $query = "SELECT * FROM view_rizvi";
-                $qr=mysqli_query($sqlconnect,$query);
 
-                while($data = mysqli_fetch_array($qr)){
+                while($data = mysqli_fetch_assoc($qr)){
                     echo '
                     <tr>
-                        <td> '.$data['a_nama'].' </td>
-                        <td> '.$data['d_jumlahrusak'].' </td>
-                        <td> '.$data['d_totalharga'].' </td>
+                        <td> '.$data['i_id'].' </td>
+                        <td> '.$data['i_nama'].' </td>
+                        <td> '.$data['m_id'].' </td>
+                        <td> '.$data['m_nama'].' </td>
                     </tr>';
                 }
             ?>
-            </table>
+        <?php
+          }//end of records
+        ?>
 
-            <script>
+        </table>
+        <?php
+        }//end if there are records
+      //end db search
+      ?>
+
+        <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");
                 }
@@ -91,6 +130,7 @@ include ("inc/navbar.php");?>
 <?php 
 //include the footer
 include ("inc/footer.php");?>
+
 
 </body>
 </html>
