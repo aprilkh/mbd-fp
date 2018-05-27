@@ -43,7 +43,7 @@ include ("inc/navbar.php");?>
 				    
 // // =======
 // 				      $query = "SELECT * FROM instansi ORDER BY I_ID ASC";
-				      $query = "SELECT concat('I', I(i_id, 2, 0)) as ID, i_nama, i_alamat, i_notelp from instansi";
+				      $query = "SELECT * from instansi";
 				      $qr=mysqli_query($sqlconnect,$query);
 // >>>>>>> master
 				      //mengecek apakah ada error ketika menjalankan query
@@ -59,7 +59,7 @@ include ("inc/navbar.php");?>
 				      {
 				        // mencetak / menampilkan data
 				        echo "<tr>";
-				        // echo "<td>$data[i_id]</td>"; //menampilkan data id
+				        echo "<td>$data[i_id]</td>"; //menampilkan data id
 				        echo "<td>$data[i_nama]</td>"; 
 				        echo "<td>$data[i_alamat]</td>";
 				        echo "<td>$data[i_notelp]</td>";

@@ -1,7 +1,11 @@
 CREATE DATABASE FP;
 
 CREATE TABLE INSTANSI(
+<<<<<<< Updated upstream
 i_id CHAR(3) NOT NULL AUTO_INCREMENT,
+=======
+i_id CHAR(3) NOT NULL,
+>>>>>>> Stashed changes
 i_nama VARCHAR(100),
 i_alamat VARCHAR(100),
 i_notelp VARCHAR(12),
