@@ -30,35 +30,59 @@ include ("inc/navbar.php");?>
         <div class="panel-heading"><h5>Rent Sport Equipment Database</h5></div>
             <div class="panel-body">
             <!-- ***********Edit your content STARTS from here******** -->
-                <h2>Join</h2>
-                <h3>Menampilkan  alat yang belum pernah di sewa</h3>
+                <h2>Trigger</h2>
+                <h3>Mencatat setiap ada instansi baru</h3>
 
-            <table class="table table-bordered"> 
-            <tr>
-                <td>ID Alat</td>
-                <td>Nama Alat</td>
-                <td>Merk</td>
-            </tr>
-            <?php
-                include 'inc/dbconn.php';
-                $query = "SELECT a.a_id, a.a_nama, a.a_merk
-                        FROM alat_or a
-                        LEFT JOIN penyewaan s ON s.a_id = a.a_id
-                        WHERE s.s_id IS NULL
-                        ORDER BY s.s_id ";
-                $qr=mysqli_query($sqlconnect,$query);
+             <form action="trigger-rizvi.php" method="post" name="">
+              <table width="80%" border="0">
+               <tr> 
+                <td>Nama Instansi</td>
+                <td><input type="text" name="i_nama"></td>
+               </tr>
+               <tr> 
+                <td>Alamat</td>
+                <td><input type="text" name="i_alamat"></td>
+               </tr>
+               <tr> 
+                <td>No. Telp</td>
+                <td><input type="number" name="i_notelp"></td>
+               </tr>
+               <tr> 
+                <td></td>
+                <td><input type="submit" name="submit" value="Add"></td>
+               </tr>
+              </table>
+             </form>
+             
 
-                while($data = mysqli_fetch_array($qr)){
+ <?php
+ 
+ if(isset($_POST['submit'])) {
+  $i_nama = $_POST['i_nama'];
+  $i_alamat = $_POST['i_alamat'];
+  $i_notelp = $_POST['i_notelp'];
+  
+  // include database connection file
+  include_once("inc/dbconn.php");
+    
+  // Insert user data into table
+  $qr = mysqli_query($sqlconnect, "INSERT INTO instansi(i_nama,i_alamat,i_notelp) VALUES('$i_nama','$i_alamat','$i_notelp')");
+  
+  // Show message when user added
+  echo "User added successfully. <a href='instansi.php'>View Users</a>";
+ }
+                 while($data = mysqli_fetch_array($qr)){
                     echo '
-                    <tr>
-                        <td> '.$data['a_id'].' </td>
-                        <td> '.$data['a_nama'].' </td>
-                        <td> '.$data['a_merk'].' </td>
+                    <tr> 
+                        <td> '.$data['i_id'].' </td>
+                        <td> '.$data['i_nama'].' </td>
+                        <td> '.$data['i_alamat'].' </td>
+                        <td> '.$data['i_notelp'].' </td>
+
                     </tr>';
                 }
-            ?>
-            </table>
-
+ 
+ ?>
             <script>
                 function myFunction() {
                     document.getElementById("myDropdown").classList.toggle("show");

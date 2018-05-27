@@ -82,10 +82,9 @@ WHERE i_nama = 'PT. Dharmala Intiland';
 
 SELECT a.a_id, a.a_nama, a.a_merk
 FROM alat_or a
-WHERE NOT EXISTS (SELECT a1.a_id
-			FROM alat_or a1
-			NATURAL JOIN penyewaan s1 ON s1.a_id = a1.a_id
-			WHERE a.a_id = a1.a_id);
+LEFT JOIN penyewaan s ON s.a_id = a.a_id
+WHERE s.s_id IS NULL
+ORDER BY s.s_id
 		
 -- cursor belum
 -- Menampilkan nama peminjam beserta instansinya

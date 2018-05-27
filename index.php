@@ -16,18 +16,15 @@
 <div class="area">
 <h3><i class="ion-cloud"></i> Login<b>Area</b></h3>
 <hr />
-<!-- 
-<?php
-	// include ('login.php');?> -->
 
 <form method="post" action="login.php">
 <div class="form-group">
 <label for="user">Username</label>
-<input class="form-control" name="username" id="user" type="text" required/>
+<input class="form-control" name="user" id="user" type="text" required/>
 </div>
 <div class="form-group">
 <label for="pass">Password </label>
-<input class="form-control" name="password" id="pass" type="password"required />
+<input class="form-control" name="pass" id="pass" type="Password"required />
 </div>
 <hr>
 <div class="form-group">
